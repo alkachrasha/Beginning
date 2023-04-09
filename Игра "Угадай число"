@@ -1,0 +1,30 @@
+import random
+
+print('Давай сыграем в игру\nЯ загадал число от 1 до 100\nУгадай это число за 7 попыток!')
+Attempts = 7
+The_secret = random.randint(1, 100)
+
+while Attempts > 0:
+
+  Answer = int(input('Введи число:'))
+
+  if Answer == The_secret:
+    print('Ты угадал!!!')
+    Attempts = -1
+
+  elif Answer > The_secret:
+    print('Не угадал, загаданное число ниже!')
+    Answer = Answer - 1
+
+  elif Answer < The_secret:
+    print('Не угадал, загаданное число выше!')
+    Answer = Answer - 1
+
+  else:
+    print('Что ты там написал? Я не понял.')
+
+if Attempts == -1:
+  print('Ты смог угадать число!\n')
+
+elif Attempts == 0:
+  print('Ты не смог угадать число :(')
