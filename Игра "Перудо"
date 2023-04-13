@@ -1,0 +1,239 @@
+def privetstvie():
+    import time
+    import random
+    a = 1
+    while a == 1:
+        print("Голос друга:")
+        print("Будешь в Перудо?")
+        da_net = input("Что вы ответите другу?-")
+        time.sleep(1)
+        if da_net == "нет":
+            print("Голос друга:")
+            print("Как хочешь, пойду найду себе другого соперника")
+            a = a - 1
+        if da_net == "да" or da_net == "Да" or da_net == "го" or da_net == "буду" or da_net == "давай":
+            print("Играем по таким правилам:")
+            time.sleep(2)
+            print("Сначала кидаем кости")
+            time.sleep(2.5)
+            print("Чур ты первый угадываешь, лгу я или нет")
+            time.sleep(3.5)
+            print("Если я совру и ты угадаешь, то я отдам тебе 1 кость и пью 1 кружку пива за свой счёт")
+            time.sleep(5)
+            print("Если я не совру, а ты меня обвинишь, то ты отдаёшь мне кость и пьёшь пиво за свой счёт")
+            time.sleep(5.5)
+            print("Если ты мне поверишь, то ход пропускается, никто не пьёт, не теряет и не получает кости")
+            time.sleep(6.5)
+            print("Первый кто вырубится или потеряет все кости проиграл и завтра покупает победителю столько пойла, сколько тот захочет!")
+            time.sleep(6)
+            a = a - 1
+            igra()
+def igra():
+    import random
+    import time
+    da = int(0)
+    while da == 0:
+        vopros3 = int(input("Сколько вы хотите ходов?"))
+        if vopros3 < 5:
+            print("---------------------------------------------------------------------------------------------")
+            print("Алё, ненене, так не пойдёт, не меньше 5 ходов давай, мы так даже бухнуть во время игры не успеем.")
+            print("---------------------------------------------------------------------------------------------")
+        elif vopros3 > 15:
+            print("---------------------------------------------------------------------------------------------")
+            print("Эээ, куда разогнался? Больше 15 не будем, слишком долго будем играть.")
+            print("---------------------------------------------------------------------------------------------")
+        elif vopros3 > 4 and vopros3 < 16:
+            print("---------------------------------------------------------------------------------------------")
+            print("Я согласен с количеством ходов")
+            print("---------------------------------------------------------------------------------------------")
+            da = da + 1
+    life2 = int(3)
+    colvokyb2 = int(5)
+    life = int(3)
+    colvokyb = int(5)
+    hod = int(1)
+    while True:
+        if life == 0:
+            print("Ого, ваш друг в щи,вы победили!")
+            time.sleep(5)
+            break
+        if life2 == 0:
+            print("Ой, а вы в щи, вы проиграли!")
+            time.sleep(5)
+            break
+        time.sleep(1)
+        print("Ваше самочувствие и самочувствие друга:")
+        life2 = str(life2)
+        life = str(life)
+        print("Я выдержу ещё " + life2 + " кружки/кружек пива")
+        print("Ваш друг говорит, что выдержит ещё " + life + " кружки/кружек пива")
+        life2 = int(life2)
+        life = int(life)
+        time.sleep(3)
+        #----------------------------
+        #-бот-
+        b = 0
+        while b == 0:
+            vret = random.randint(1, 2)
+            plus_munus = random.randint(1, 2)
+            raznica = random.randint(1, 3)
+            loch = 0
+            if colvokyb == 5:
+                chislo = random.randint(5, 25)
+            elif colvokyb == 4:
+                chislo = random.randint(4, 20)
+            elif colvokyb == 3:
+                chislo = random.randint(3, 15)
+            elif colvokyb == 2:
+                chislo = random.randint(2, 10)
+            elif colvokyb == 1:
+                chislo = random.randint(1, 5)
+            elif colvokyb == 0:
+                print("Ты победил!")
+                print("У соперника не осталось костей")
+                time.sleep(5)
+                break
+            if vret == 1:
+                chislo = chislo
+            elif vret == 2:
+                if plus_munus == 1:
+                    loch = chislo + raznica
+                    loch = loch
+                elif plus_munus == 2:
+                    loch = chislo - raznica
+                    loch = loch
+            if chislo <= 25 and chislo >> 0:
+                b = b + 1
+        # ----------------------------
+        print("---------------------------------------------------------------------------------------------")
+        time.sleep(5)
+        if colvokyb2 == 8:
+            chislo2 = random.randint(8, 40)
+        elif colvokyb2 == 7:
+            chislo2 = random.randint(7, 35)
+        elif colvokyb2 == 6:
+            chislo2 = random.randint(6, 30)
+        elif colvokyb2 == 5:
+            chislo2 = random.randint(5, 25)
+        elif colvokyb2 == 4:
+            chislo2 = random.randint(4, 20)
+        elif colvokyb2 == 3:
+            chislo2 = random.randint(3, 15)
+        elif colvokyb2 == 2:
+            chislo2 = random.randint(2, 10)
+        elif colvokyb2 == 1:
+            chislo2 = random.randint(1, 5)
+        elif colvokyb2 == 0:
+            print("Вы проиграли")
+            print("У вас не осталось костей")
+            time.sleep(5)
+            break
+        chislo2 = str(chislo2)
+        colvokyb2 = str(colvokyb2)
+        print("У вас выпало - " + chislo2)
+        print("Ваше количество костей - " + colvokyb2)
+        chislo2 = int(chislo2)
+        colvokyb2 = int(colvokyb2)
+        time.sleep(2)
+        print("---------------------------------------------------------------------------------------------")
+        print("Соперник говорит, что у него -")
+        chislo = str(chislo)
+        loch = str(loch)
+        if vret == 1:
+            print(chislo)
+        elif vret == 2:
+            print(loch)
+        chislo = int(chislo)
+        loch = int(loch)
+        print("---------------------------------------------------------------------------------------------")
+        vopros2 = input("Врёт ли соперник?")
+        if vopros2 == "да":
+            if vret == 1:
+                print("---------------------------------------------------------------------------------------------")
+                print("Соперник не врал, вы пьёте 1 кружку пива и теряете 1 кость")
+                print("---------------------------------------------------------------------------------------------")
+                colvokyb2 = colvokyb2 - 1
+                colvokyb = colvokyb + 1
+                life2 = life2 - 1
+            elif vret == 2:
+                print("---------------------------------------------------------------------------------------------")
+                print("Соперник соврал, он пьёт 1 кружку пива и теряет 1 кость")
+                print("---------------------------------------------------------------------------------------------")
+                colvokyb2 = colvokyb2 + 1
+                colvokyb = colvokyb - 1
+                life = life - 1
+        elif vopros2 == "нет":
+            print("Тогда продолжаем...")
+        if life == 0:
+            print("Ого, ваш друг в щи,вы победили!")
+            time.sleep(5)
+            break
+        if life2 == 0:
+            print("Ой, а вы в щи, вы проиграли!")
+            time.sleep(5)
+            break
+        time.sleep(2)
+        print("---------------------------------------------------------------------------------------------")
+        govora = int(input("Какое число вы скажите сопернику?"))
+        print("---------------------------------------------------------------------------------------------")
+        с1 = chislo2 - 1
+        c2 = chislo2 + 1
+        if govora == chislo2:
+            prav_loch = 1
+        elif govora < с1:
+            prav_loch = 2
+        elif govora > c2:
+            prav_loch = 2
+        time.sleep(2)
+        vopros = random.randint(1, 2)
+        if vopros == 1:
+            print("Соперник говорит, что вы врёте")
+            if prav_loch == 1:
+                print("---------------------------------------------------------------------------------------------")
+                print("Вы не врали, соперник пьёт 1 кружку пива и теряет 1 кость")
+                print("---------------------------------------------------------------------------------------------")
+                colvokyb2 = colvokyb2 + 1
+                colvokyb = colvokyb - 1
+                life = life - 1
+            elif prav_loch == 2:
+                print("---------------------------------------------------------------------------------------------")
+                print("Соперник угадал, что вы врёте, вы пьёте 1 кружку пива и теряете 1 кость")
+                print("---------------------------------------------------------------------------------------------")
+                colvokyb2 = colvokyb2 - 1
+                colvokyb = colvokyb + 1
+                life2 = life2 - 1
+        elif vopros == 2:
+            print("---------------------------------------------------------------------------------------------")
+            print("Соперник верит, идём дальше")
+            print("---------------------------------------------------------------------------------------------")
+        hod = str(hod)
+        print("---------------------------------------------------------------------------------------------")
+        print("Ход " + hod + " закончен!")
+        print("---------------------------------------------------------------------------------------------")
+        if life == 0:
+            print("Ого, ваш друг в щи,вы победили!")
+            time.sleep(5)
+            break
+        if life2 == 0:
+            print("Ой, а вы в щи, вы проиграли!")
+            time.sleep(5)
+            break
+        if hod == vopros3:
+            print("Ходы закончились")
+            print("У кого больше костей, тот победил!")
+            if colvokyb == colvokyb2:
+                print("Ничья!")
+                print("Победила дружба!")
+                time.sleep(2)
+                break
+            elif colvokyb << colvokyb2:
+                print("Ты победил, у тебя больше костей")
+                time.sleep(2)
+                break
+            elif colvokyb2 << colvokyb:
+                print("Ты проиграл, у соперника больше костей")
+                time.sleep(2)
+                break
+        hod = int(hod)
+        hod = hod + 1
+privetstvie()
