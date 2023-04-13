@@ -1,0 +1,58 @@
+import time
+import random
+global d2
+global d3
+def pobeda():
+    print(" |  1   2   3")
+    print("a|  " + a1 + " ¦ " + a2 + " ¦ " + a3 + "")
+    print(" |  ==+===+==")
+    print("b|  " + b1 + " ¦ " + b2 + " ¦ " + b3 + "")
+    print(" |  ==+===+==")
+    print("c|  " + c1 + " ¦ " + c2 + " ¦ " + c3 + "")
+    exit()
+d1 = 1
+while d1 == 1:
+    print("Будете играть? д/н")
+    d2 = input("-")
+    if d2 == "д":
+        print("Какой вы выберите режим?")
+        print("1)Хот-сит | 2)Одиночный режим")
+        d4 = 0
+        while d4 == 0:
+            d3 = input("-")
+            if d3 == "1":
+                print("Играем Хот-сит")
+                d4 = 1
+            elif d3 == "2":
+                print("Играем Одиночный режим")
+                d4 = 1
+            else:
+                print("Фигню написал")
+        d1 = 0
+        print("Отлично, играем!")
+    elif d2 == "н":
+        d1 = 0
+        print("Ок, не играем")
+        exit()
+    else:
+        print("Неправильный ввод")
+if d2 == "д":
+    d6 = 0
+    a1 = " "
+    a2 = " "
+    a3 = " "
+    b1 = " "
+    b2 = " "
+    b3 = " "
+    c1 = " "
+    c2 = " "
+    c3 = " "
+    while True:
+        # Условие поражения
+        if a1 == "0" and a2 == "0" and a3 == "0":
+            print("Победил 0!")
+            time.sleep(1)
+            pobeda()
+        elif b1 == "0" and b2 == "0" and b3 == "0":
+            print("Победил 0!")
+            time.sleep(1)
