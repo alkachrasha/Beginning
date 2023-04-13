@@ -1,0 +1,414 @@
+import time
+import random
+def nastroiki():
+    global money
+    a = 1
+    while a == 1:
+        print("Настройки")
+        print("Режимы:")
+        print("Креатив(1) - Бесконечные деньги")
+        print("Реал(2) - Всё как в реальной жизни, есть начальный капитал, можно настраивать сложность")
+        print("Хард(3) - Минимальный капитал, даже на бизнес не хватает")
+        b = input("Выберите режим? 1/2/3 -")
+        if b == "1":
+            money = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            igra()
+        elif b == "2":
+            while a == 1:
+                c1 = input("Выберите сложность? 1/2/3 -")
+                if c1 == "1":
+                    money = 50000
+                    a = 2
+                elif c1 == "2":
+                    money = 40000
+                    a = 2
+                elif c1 == "3":
+                    money = 30000
+                    a = 2
+                else:
+                    print("Неправильный ввод")
+            igra()
+        elif b == "3":
+            money = 10000
+            igra()
+        else:
+            print("Неправильный ввод")
+    igra()
+def igra():
+    global money
+    print("Начинаем!")
+    print("В скобочках ПОСЛЕ действия будет указана его стоимость в очках действий")
+    print("Если в скобочках указана цыфра 0, то при выборе вы перейдёте в список следующих действий")
+    deistvie = 3
+    day = 1
+    sclad = 0
+    sclad1 = []
+    my_bisnes = 0
+    home = 0
+    zdanie = 3
+    bisnes = 2
+    while True:
+        # еда
+        f1 = random.randint(1500, 2500)
+        # Эл.техника
+        f2 = random.randint(8000, 45000)
+        # Одежда
+        f3 = random.randint(2500, 5000)
+        # Детские игрушки
+        f4 = random.randint(500, 1500)
+        # Травматические винтовки
+        f5 = random.randint(5000, 15000)
+        # Бриллиант
+        f6 = random.randint(1500000, 2000000)
+        # Дорогая картина
+        f7 = random.randint(1000000, 1500000)
+        # Машина
+        f8 = random.randint(2000000, 3000000)
+        #---------------------------------------------------
+        v1 = random.randint(10, 12)
+        rand = random.randint(3,5)
+        v2 = v1 * rand
+        v3 = v2 * rand
+        # ---------------------------------------------------
+        a = 1
+        nalog1 = random.randint(1000, 1500)
+        nalog2 = random.randint(4000, 5000)
+        while a == 1:
+            print("--------------------------------------------")
+            print("Ваши деньги: " + str(money))
+            print("День " + str(day))
+            print("Ваши очки действий: " + str(deistvie))
+            print("Возможные действия:")
+            print("1) Заглянуть на рынок(0)")
+            print("2) Посмотреть курс валют(1)")
+            print("3) Обратиться к Антону-бизнесу за советом(1)")
+            print("4) Действия с бизнесами(0)")
+            print("5) Посмотреть тариф налогов(1)")
+            print("6) Поучавствовать в лотерее(1)")
+            print("7) Пойти вручную поработать(0)")
+            print("8) Закончить день(0)")
+            print("9) Напиться в баре Голубая устрица(2)")
+            print("0) Выйти из игры(0)(Сохранения не работают)")
+            print("--------------------------------------------")
+            if deistvie == 0:
+                print()
+            elif deistvie >= 1:
+                g = input("Что вы выберите? -")
+            if g == "1":
+                print("Поставки в магазины:")
+                print("После товара будет указана его стоимость")
+                f0 = random.randint(1, 3)
+                if f0 == 1:
+                    print("--------------------------------------------")
+                    print("Поставки:")
+                    print("1)Еда " + str(f1))
+                    t1 = "еда"
+                    print("2)Эл.техника " + str(f2))
+                    t2 = "Эл.техника"
+                    print("3)Одежда " + str(f3))
+                    t3 = "Одежда"
+                    print("Особый товар:")
+                    print("4)Бриллиант " + str(f6))
+                    t4 = "Бриллиант"
+                elif f0 == 2:
+                    print("Поставки:")
+                    print("1)Эл.техника " + str(f2))
+                    t1 = "Эл.техника"
+                    print("2)Травматические винтовки " + str(f5))
+                    t2 = "Травматические винтовки"
+                    print("3)Детские игрушки " + str(f4))
+                    t3 = "Детские игрушки"
+                    print("Особый товар:")
+                    print("4)Дорогая картина " + str(f6))
+                    t4 = "Дорогая картина"
+                elif f0 == 3:
+                    print("Поставки:")
+                    print("1)Еда " + str(f1))
+                    t1 = "Еда"
+                    print("2)Одежда " + str(f3))
+                    t2 = "Одежда"
+                    print("3)Детские игрушки " + str(f4))
+                    t3 = "Детские игрушки"
+                    print("Особый товар:")
+                    print("4)Машина " + str(f8))
+                    t4 = "Машина"
+                    print("--------------------------------------------")
+                v1 = input("Вам что-нибудь нужно? 1/2/3/4 -")
+                if v1 == "1":
+                    if f0 == 1:
+                        print("Еда")
+                        sclad = sclad + 1
+                        if money >= f1:
+                            money = money - int(f1)
+                        else:
+                            print("Недостаточно денег на покупку")
+                    if f0 == 2:
+                        print("Эл.техника")
+                        sclad = sclad + 1
+                        money = money - int(f1)
+                    if f0 == 3:
+                        print("Еда")
+                        sclad = sclad + 1
+                        money = money - int(f1)
+                if v1 == "2":
+                    if f0 == 1:
+                        print("Эл.техника")
+                        sclad = sclad + 1
+                        money = money - int(f1)
+                    if f0 == 2:
+                        print("Травматические винтовки")
+                        sclad = sclad + 1
+                        money = money - int(f5)
+                    if f0 == 3:
+                        print("Одежда")
+                        sclad = sclad + 1
+                        money = money - int(f2)
+                if v1 == "3":
+                    if f0 == 1:
+                        print("Одежда")
+                        sclad = sclad + 1
+                        money = money - int(f2)
+                    if f0 == 2:
+                        print("Детские игрушки")
+                        sclad = sclad + 1
+                        money = money - int(f3)
+                    if f0 == 3:
+                        print("Детские игрушки")
+                        sclad = sclad + 1
+                        money = money - int(f3)
+                if v1 == "4":
+                    if f0 == 1:
+                        print("Бриллиант")
+                        sclad1.append("Бриллиант")
+                        money = money - int(f6)
+                    if f0 == 2:
+                        print("Дорогая картина")
+                        sclad1.append("Дорогая картина")
+                        money = money - int(f7)
+                    if f0 == 3:
+                        print("Машина")
+                        sclad1.append("Машина")
+                        money = money - int(f8)
+                deistvie = deistvie - 1
+            elif g == "2":
+                print("--------------------------------------------")
+                print("Один серебрянник стоит " + str(v1) + " бронзовых.")
+                print("Один золотой стоит " + str(v2) + " бронзовых")
+                print("Один платиновый стоит " + str(v3) + " бронзовых")
+                print("--------------------------------------------")
+                deistvie = deistvie - 1
+            elif g == "3":
+                print("--------------------------------------------")
+                print("Дать совет?")
+                print("Окей.")
+                print("Если мало денег, не покупайте лотерейные билеты")
+                print("Всегда оставляйте 1 - 2 тысячи монет в запасе на крайний случай")
+                print("Рационально расходуй очки действий, думай, что для тебя важнее")
+                print("Особые товары это коллекционные предметы, их стоит покупать только если денег слишком много")
+                print("Слушай меня и станешь богатым, ведь Я - Антон-бизнес, и я богат")
+                print("--------------------------------------------")
+            elif g == "4":
+                s = 1
+                while s == 1:
+                    print("--------------------------------------------")
+                    print("1) Купить пустое здание(2)")
+                    print("2) Купить готовый бизнес(1)")
+                    print("3) Сделать бизнес(1)")
+                    print("4) Выйти(0)")
+                    print("--------------------------------------------")
+                    vopros5 = input("-")
+                    if vopros5 == "1":
+                        print("Число продоваемых пустых зданий:")
+                        print(zdanie)
+                        j = input("Покупаете здание(10000)? да/нет -")
+                        u = 1
+                        while u == 1:
+                            if j == "да":
+                                if money <= 9999:
+                                    print("У вас не хватает денег")
+                                elif zdanie <= 0:
+                                    print("Нет продаваемых зданий")
+                                elif deistvie <= 0:
+                                    print("Не хватает очков действий")
+                                else:
+                                    zdanie = zdanie - 1
+                                    home = home + 1
+                                    money = money - 10000
+                                u = 0
+                            elif j == "нет":
+                                print("Возвращаемся")
+                                u = 0
+                            else:
+                                print("Неправильный ввод")
+                    elif vopros5 == "2":
+                        u = 1
+                        while u == 1:
+                            print("Продаваемоё число готовых бизнесов:")
+                            print(bisnes)
+                            j = input("Покупаете бизнес(20000)? да/нет -")
+                            if j == "да":
+                                if money <= 14999:
+                                    print("Не хватает денег")
+                                elif bisnes <= 0:
+                                    print("Нет продаваемых бизнесов")
+                                elif deistvie <= 0:
+                                    print("Не хватает очков действий")
+                                else:
+                                    bisnes = bisnes - 1
+                                    my_bisnes = my_bisnes + 1
+                                    money = money - 20000
+                                u = 0
+                            elif j == "нет":
+                                print("Возвращаемся")
+                                u = 0
+                            else:
+                                print("Неправильный ввод")
+                    elif vopros5 == "3":
+                        print("Для создания бизнеса необходимо:")
+                        print("1) 1 пустое здание")
+                        print("2) 1 поставка на складе")
+                        if sclad >= 1:
+                            if home >= 1:
+                                print("Бизнес готов")
+                                bisnes = bisnes - 1
+                                my_bisnes = my_bisnes + 1
+                            else:
+                                print("Чего-то не хватает")
+                        else:
+                            print("Чего-то не хватает")
+                    elif vopros5 == "4":
+                        s = 0
+                    else:
+                        print("Неправильный ввод")
+            elif g == "5":
+                print(nalog1)
+                print(nalog2)
+            elif g == "6":
+                print("Лотерея стоит 250 монет")
+                money = money - 250
+                print("Выйгрышь в лотерее - 100000 монет")
+                p = random.randint(1, 100)
+                if p == 1:
+                    print("--------------------------------------------")
+                    print("Ты выйграл в лотерее!")
+                    print("--------------------------------------------")
+                    money = money + 100000
+                elif p >> 1:
+                    print("--------------------------------------------")
+                    print("Прости, но ты проиграл.")
+                    print("--------------------------------------------")
+            elif g == "7":
+                print("1)Поработать грузчиком(3) - прибыль 1200")
+                print("2)Поработать доставщиком(2) - прибыль 700")
+                print("3)Поработать промоутером(1) - прибыль 400")
+                print("4)Поработать клоуном(3) - прибыль 1500")
+                print("5)Поработать в переулке(3) - прибыль 3000")
+                i = input("-")
+                if i == "1":
+                    if deistvie == 3:
+                        money = money + 1200
+                        deistvie = 0
+                    else:
+                        print("Недостаточно очков действий")
+                elif i == "2":
+                    if deistvie >= 2:
+                        money = money + 700
+                        deistvie = deistvie - 2
+                    else:
+                        print("Недостаточно очков действий")
+                elif i == "3":
+                    if deistvie >= 1:
+                        money = money + 400
+                        deistvie = deistvie - 1
+                    else:
+                        print("Недостаточно очков действий")
+                elif i == "4":
+                    if deistvie == 3:
+                        money = money + 1500
+                        deistvie = 0
+                    else:
+                        print("Недостаточно очков действий")
+                elif i == "5":
+                    if deistvie == 3:
+                        money = money + 3000
+                        deistvie = 0
+                    else:
+                        print("Недостаточно очков действий")
+            elif g == "8":
+                deistvie = 0
+            elif g == "9":
+                print("Вы идёте в бар")
+                time.sleep(2)
+                print("Вы вошли в бар")
+                time.sleep(2)
+                print("Вы выпили в баре")
+                time.sleep(2)
+                print("К вам пристают мальчики")
+                time.sleep(2)
+                print("Сейчас может случиться что угодно...")
+                time.sleep(2)
+                h = random.randint(1, 3)
+                if h == 1:
+                    print("Вы без проишествий идёте домой")
+                elif h == 2:
+                    print("Вы остались с мальчиками...")
+                    print("Теперь вы Faking Slave")
+                    time.sleep(2)
+                    print("Вас больше не найдут...")
+                    while True:
+                        break
+                elif h == 3:
+                    print("Вас изнасиловали и ограбили, но вы живы и это хорошо")
+                    money = money - 5000
+            elif g == "0":
+                while True:
+                    break
+            else:
+                print("Неправильный ввод")
+            if deistvie == 0:
+                a = 0
+        if my_bisnes == 0:
+            print("Вы не получаете прибыль от бизнесов, их у вас нет")
+        elif my_bisnes >= 1:
+            print("Ваша прибыль:")
+            if my_bisnes == 1:
+                print("1500")
+            elif my_bisnes == 2:
+                print("3000")
+            elif my_bisnes == 3:
+                print("4500")
+            elif my_bisnes == 4:
+                print("6000")
+            elif my_bisnes == 5:
+                print("7500")
+            elif my_bisnes == 6:
+                print("9000")
+        day = day + 1
+        deistvie = 3
+        if day == 10 or day == 20 or day == 30 or day == 40 or day == 50 or day == 60 or day == 70 or day == 80:
+            print("Время плотить нологи")
+            print("Вам нужно заплотить:")
+            print(nalog1 + nalog2)
+            q = nalog2 + nalog1
+            if q > money:
+                print("Вам не хватает денег, вы банкрот")
+                while True:
+                    break
+            money = money - q
+def privetstvie():
+    print("Приветствую")
+    print("Это игра Бизнес")
+    print("Хочешь сыграть? да/нет")
+    a = 1
+    while a == 1:
+        a1 = input("-")
+        if a1 == "да":
+            print("Очень хорошо")
+            a = 2
+            nastroiki()
+        elif a1 == "нет":
+            print("Как хочешь, отключаюсь")
+            a = 2
+        else:
+            print("Неправильный ввод")
+privetstvie()
