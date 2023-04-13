@@ -1,0 +1,392 @@
+def play():
+    import time
+    print("Привет")
+    time.sleep(1)
+    a = input("Ты там не заскучал? Го поиграем?")
+    if a == "да":
+        igra()
+    elif a == "нет":
+        konech()
+def konech():
+    print("Ну окей, пока")
+def igra():
+    import random
+    import time
+    b = random.randint(0, 2)
+    b = 1
+    print("Начнём")
+    print(".")
+    time.sleep(1)
+    print(".")
+    time.sleep(1)
+    print(".")
+    if b == 0:
+        kamnobym()
+    elif b == 1:
+        blackgeck()
+    elif b == 2:
+        morskoi_boi()
+def kamnobym():
+    import random
+    c1 = input("Камень, ножницы или бумага?")
+    c2 = random.randint(0, 2)
+    if c2 == 1:
+        print("Ты победил")
+        g = input("Играем заного в камень-ножницы-бумага?")
+        if g == "да":
+            kamnobym()
+        elif g == "нет":
+            print("Тогда я заного выберу игру...")
+            igra()
+    elif c2 == 2:
+        print("Ты проиграл")
+        g = input("Играем заного в камень-ножницы-бумага?")
+    elif c2 == 0:
+        print("Ничья, заного")
+        kamnobym()
+def blackgeck():
+    print("Это игра БлэкДжекк")
+    koloda = [6, 7, 8, 9, 10, 2, 3, 4, 11] * 4
+    import random
+    random.shuffle(koloda)
+    print('поиграем в Black jack?')
+    count = 0
+    while True:
+        choice = input('будете брать карту?y/n\n')
+        if choice == 'y':
+            current = koloda.pop()
+            print('Вам попалась карта достоинства %d' % current)
+            count += current
+            if count > 21:
+                print('извините но вы проиграли')
+                play()
+            elif count == 21:
+                print('Поздравляю вы выиграли')
+                play()
+            else:
+                print('у вас %d очков ' % count)
+        elif choice == "n":
+            print('у вас %d количество очков  вы закончили игру ' % count)
+            play()
+    print('пока')
+def morskoi_boi():
+    print("Это игра морской бой")
+    import random
+    you_field0 = [" ", " [a]", " [b]", " [c]"]
+    you_field1 = ["1", "[a1]", "[b1]", "[c1]"]
+    you_field2 = ["2", "[a2]", "[b2]", "[c2]"]
+    you_field3 = ["3", "[a3]", "[b3]", "[c3]"]
+    print(you_field0)
+    print(you_field1)
+    print(you_field2)
+    print(you_field3)
+    ship = input("Где будет распологаться корабль?-")
+    if ship == "a1":
+        you_field1.pop(1)
+        you_field1.insert(1, "(xx)")
+    elif ship == "a2":
+        you_field1.pop(2)
+        you_field1.insert(2, "(xx)")
+    elif ship == "a3":
+        you_field1.pop(3)
+        you_field1.insert(3, "(xx)")
+    elif ship == "b1":
+        you_field2.pop(1)
+        you_field2.insert(1, "(xx)")
+    elif ship == "b2":
+        you_field2.pop(2)
+        you_field2.insert(2, "(xx)")
+    elif ship == "b3":
+        you_field2.pop(3)
+        you_field2.insert(3, "(xx)")
+    elif ship == "c1":
+        you_field3.pop(1)
+        you_field3.insert(1, "(xx)")
+    elif ship == "c2":
+        you_field3.pop(2)
+        you_field3.insert(2, "(xx)")
+    elif ship == "c3":
+        you_field3.pop(3)
+        you_field3.insert(3, "(xx)")
+    else:
+        print("Незнаю такой клетки")
+        print("Заново расставь корабли")
+    print(you_field0)
+    print(you_field1)
+    print(you_field2)
+    print(you_field3)
+    print("-----------------------")
+    print("Снизу поле противника")
+    print("-----------------------")
+    print(" ", " [a]", " [b]", " [c]")
+    print("1", "[a1]", "[b1]", "[c1]")
+    print("2", "[a2]", "[b2]", "[c2]")
+    print("3", "[a3]", "[b3]", "[c3]")
+    enemy = random.randint(1, 9)
+    enemy_field0 = [" ", " [a]", " [b]", " [c]"]
+    enemy_field1 = ["1", "[a1]", "[b1]", "[c1]"]
+    enemy_field2 = ["2", "[a2]", "[b2]", "[c2]"]
+    enemy_field3 = ["3", "[a3]", "[b3]", "[c3]"]
+    if enemy == 1:
+        enemy_field1.pop(1)
+        enemy_field1.insert(1, "(a1)")
+    elif enemy == 2:
+        enemy_field1.pop(2)
+        enemy_field1.insert(2, "(b1)")
+    elif enemy == 3:
+        enemy_field1.pop(3)
+        enemy_field1.insert(3, "(c1)")
+    elif enemy == 4:
+        enemy_field2.pop(1)
+        enemy_field2.insert(1, "(a2)")
+    elif enemy == 5:
+        enemy_field2.pop(2)
+        enemy_field2.insert(2, "(b2)")
+    elif enemy == 6:
+        enemy_field2.pop(3)
+        enemy_field2.insert(3, "(c2)")
+    elif enemy == 7:
+        enemy_field3.pop(1)
+        enemy_field3.insert(1, "(a3)")
+    elif enemy == 8:
+        enemy_field3.pop(2)
+        enemy_field3.insert(2, "(b3)")
+    elif enemy == 9:
+        enemy_field3.pop(3)
+        enemy_field3.insert(3, "(c3)")
+    cartridges = int(8)
+    while True:
+        you_shot = input("Куда ты собираешься стрелять?")
+        if you_shot == "a1":
+            if enemy == 1:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field1.pop(1)
+                enemy_field1.insert(1, "(00)")
+                enemy_field1 = ["1", "[00]", "[b1]", "[c1]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+        if you_shot == "a2":
+            if enemy == 4:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field2.pop(2)
+                enemy_field2.insert(2, "(00)")
+                enemy_field2 = ["2", "[00]", "[b2]", "[c2]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "a3":
+            if enemy == 7:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field3.pop(3)
+                enemy_field3.insert(3, "(00)")
+                enemy_field3 = ["3", "[00]", "[b3]", "[c3]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "b1":
+            if enemy == 2:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field1.pop(1)
+                enemy_field1.insert(1, "(00)")
+                enemy_field1 = ["1", "[a1]", "[00]", "[c1]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "b2":
+            if enemy == 5:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field2.pop(2)
+                enemy_field2.insert(2, "(00)")
+                enemy_field2 = ["2", "[a2]", "[00]", "[c2]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "b3":
+            if enemy == 8:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field3.pop(3)
+                enemy_field3.insert(3, "(00)")
+                enemy_field3 = ["3", "[a3]", "[00]", "[c3]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "c1":
+            if enemy == 3:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field1.pop(1)
+                enemy_field1.insert(1, "(00)")
+                enemy_field1 = ["1", "[a1]", "[b1]", "[00]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "c2":
+            if enemy == 6:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field2.pop(2)
+                enemy_field2.insert(2, "(00)")
+                enemy_field2 = ["2", "[a2]", "[b2]", "[00]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                    cartridges = cartridges - 1
+                    cartridges = str(cartridges)
+                    print("Осталось снарядов - " + cartridges)
+                    cartridges = int(cartridges)
+                    if cartridges == 0:
+                        print("Снаряды закончились, ничья!")
+                        play()
+                        lobby()
+        if you_shot == "c3":
+            if enemy == 9:
+                print("Ты победил!")
+                play()
+                break
+            else:
+                enemy_field3.pop(3)
+                enemy_field3.insert(3, "(00)")
+                enemy_field3 = ["3", "[a3]", "[b3]", "[00]"]
+                enemy_shot = random.randint(1, 9)
+                if enemy_shot == 1:
+                    print("------------------------------")
+                    print("Ты проиграл, враг попал в тебя")
+                    print("Переходим в лобби...")
+                    print("------------------------------")
+                    lobby()
+                else:
+                    print("Враг промахнулся")
+                cartridges = cartridges - 1
+                cartridges = str(cartridges)
+                print("Осталось снарядов - " + cartridges)
+                cartridges = int(cartridges)
+                if cartridges == 0:
+                    print("Снаряды закончились, ничья!")
+                    play()
+play()
