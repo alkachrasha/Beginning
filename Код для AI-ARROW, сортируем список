@@ -1,0 +1,47 @@
+def get_median():
+    #Создаём переменные и список
+    Chislo=0
+    Colichestvo=0
+    list=[]
+
+    #Собираем произвольное кол-во чисел, заканчивающихся на 10 и записываем в список, а так-же подсчитываем кол-во чисел
+    while not Chislo == 10:
+        Chislo=int(input())
+        Colichestvo=Colichestvo+1
+        list.append(Chislo)
+    print(Colichestvo)
+    print(list)
+
+    #Сортируем список по возрастанию
+    list.sort()
+    #Условия и подсчёты
+    Median=1
+    if Colichestvo%2 == 0:
+        #Середины нет, складываем 2 числа по середине и делим на 2, тип float
+
+        Median_num_1 = Colichestvo/2-0.5
+        Median_num_1 = int(Median_num_1)
+
+        Median_num_2 = Colichestvo/2+0.5
+        Median_num_2 = int(Median_num_2)
+
+        Median = (list[Median_num_1]+list[Median_num_2])/2
+        print("!")
+        print(Median_num_1)
+        print(Median_num_2)
+        print("!")
+    elif Colichestvo%2 == 1:
+        #Есть среднее число, тип int
+
+        Median_num = Colichestvo/2-0.5
+        Median_num=int(Median_num)
+
+        Median = list[Median_num]
+        print("?")
+        print(Median_num)
+        print("?")
+    #Выводим ответ
+    if Median%1 == 0:
+        Median=int(Median)
+    print(Median)
+get_median()
