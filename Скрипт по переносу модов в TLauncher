@@ -1,0 +1,10 @@
+import os
+
+directory = 'C:/Users/Home/Downloads/'
+
+for filename in os.listdir(directory):
+    file = os.path.join(directory, filename)
+    File_name = os.path.basename(file)
+    if file.endswith('.jar'):
+        File_name = "C:/Users/Home/AppData/Roaming/.tlauncher/legacy/Minecraft/game/mods/" + File_name
+        os.replace(file, File_name)
